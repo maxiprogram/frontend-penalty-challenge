@@ -1,0 +1,7 @@
+<p>video-page works!</p>
+
+@if (videoData$ | async; as videoData) {
+    <p>url_video_short: {{ videoData.url_video_short }}</p>
+    <p>url_video_full: {{ videoData.url_video_full }}</p>
+    <p>answer_true: {{ videoData.answer_true }}</p>
+}

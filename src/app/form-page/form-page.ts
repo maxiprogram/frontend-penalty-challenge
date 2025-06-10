@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-page',
@@ -8,6 +9,10 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   imports: [ReactiveFormsModule],
 })
 export class FormPage {
+  constructor(private readonly router: Router) {
+
+  }
+
   userForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
@@ -16,7 +21,7 @@ export class FormPage {
   });
 
   onSubmit() {
-    //console.log('Send Data', this.firstName.value, this.lastName.value, this.email.value); 
     console.log('Send Data', this.userForm.value);
+    this.router.navigateByUrl('/video-page');
   }
 }
