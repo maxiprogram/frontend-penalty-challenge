@@ -28,8 +28,7 @@ export class VideoPage {
 
   constructor(private readonly router: Router) {
     effect(() => {
-      const refWindow: any = window;
-      this.videoData$ = this.http.get<VideoData>(refWindow.URL_API+'/get-video');
+      this.videoData$ = this.http.get<VideoData>('http://localhost:3000/api/get-video');
       this.videoData$.subscribe((videoData) => {
         console.log('subscribe:', videoData);
         this.responseVideoData = videoData;
