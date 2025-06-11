@@ -1,6 +1,7 @@
 <!-- <p>form-page works!</p> -->
 
-<!-- <form [formGroup]="userForm" (ngSubmit)="onSubmit()"> -->
+@if (!isLoading()) {
+    <!-- <form [formGroup]="userForm" (ngSubmit)="onSubmit()"> -->
 <form [formGroup]="userForm">
 
     @if (userForm.get('firstName')?.hasError('required') && (userForm.get('firstName')?.dirty || userForm.get('firstName')?.touched)) {
@@ -47,4 +48,7 @@
     <p></p>
     <button type="button" (click)="onSubmit()" [disabled]="!userForm.valid">Далее</button>
 </form>
+} @else {
+    <div>Ожидайте...</div>
+}
 

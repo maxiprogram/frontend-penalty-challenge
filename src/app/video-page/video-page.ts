@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { ChangeDetectorRef, Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnDestroy, OnInit, signal, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { Subscription } from 'rxjs';
@@ -22,6 +22,7 @@ export class VideoPage implements OnInit, OnDestroy {
   responseVideoData: VideoData|undefined = undefined;
   isShort: boolean = true;
   isShowButtons: boolean = false;
+  isLoaded = signal(false);
   private resultAnswer: boolean|undefined = undefined;
   private idSubscription!: Subscription;
   @ViewChild('id_video') id_video!: any;
@@ -46,7 +47,8 @@ export class VideoPage implements OnInit, OnDestroy {
       console.log('subscribe:', resp);
       this.responseVideoData = resp;
       console.log('this.responseVideoData', this.responseVideoData);
-      this.changeDetectorRef.detectChanges();
+      this.isLoaded.set(true);
+      //this.changeDetectorRef.detectChanges();
     });
   }
 
