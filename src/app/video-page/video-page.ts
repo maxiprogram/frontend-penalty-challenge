@@ -2,7 +2,7 @@ import { AsyncPipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, effect, inject, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 interface VideoData {
   url_video_short: string,
@@ -28,7 +28,8 @@ export class VideoPage {
 
   constructor(private readonly router: Router) {
     effect(() => {
-      this.videoData$ = this.http.get<VideoData>('http://localhost:3000/api/get-video');
+      const refWindow: any = window;
+      this.videoData$ = this.http.get<VideoData>(refWindow.URL_API+'/get-video');
       this.videoData$.subscribe((videoData) => {
         console.log('subscribe:', videoData);
         this.responseVideoData = videoData;
