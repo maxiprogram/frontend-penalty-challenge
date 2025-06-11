@@ -1,19 +1,19 @@
 <!-- <p>video-page works!</p> -->
 
 @if (isShort) {
-    @if (videoData$ | async; as videoData) {
-        <!-- <p>url_video_short: {{ videoData.url_video_short }}</p>
-        <p>url_video_full: {{ videoData.url_video_full }}</p>
-        <p>answer_true: {{ videoData.answer }}</p> -->
-
+    <!-- <p>url_video_short: {{ videoData.url_video_short }}</p>
+    <p>url_video_full: {{ videoData.url_video_full }}</p>
+    <p>answer_true: {{ videoData.answer }}</p> -->
+    
+    @if (responseVideoData) {
         <video #id_video autoplay (canplay)="VideoPlay()" (ended)="onVideoEnded()" controls>
-            <source src="{{ videoData.url_video_short }}" type="video/mp4">
+            <source src="{{ responseVideoData.url_video_short }}" type="video/mp4">
         </video>
     }
 } @else {
-    @if (videoData$ | async; as videoData) {
+    @if (responseVideoData) {
         <video #id_video autoplay (canplay)="VideoPlay()" (ended)="onVideoEnded()">
-            <source src="{{ videoData.url_video_full }}" type="video/mp4">
+            <source src="{{ responseVideoData.url_video_full }}" type="video/mp4">
         </video>
     }
 }

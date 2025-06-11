@@ -1,9 +1,8 @@
-import { AsyncPipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, effect, inject, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { Subscription } from 'rxjs';
 
 interface VideoData {
   url_video_short: string,
@@ -13,28 +12,49 @@ interface VideoData {
 
 @Component({
   selector: 'app-video-page',
-  imports: [AsyncPipe],
+  imports: [],
   templateUrl: './video-page.html',
   styleUrl: './video-page.css'
 })
-export class VideoPage {
+export class VideoPage implements OnInit, OnDestroy {
   private http = inject(HttpClient);
-  videoData$!: Observable<VideoData>;
-  responseVideoData!: VideoData;
+  //videoData$!: Observable<VideoData>;
+  responseVideoData: VideoData|undefined = undefined;
   isShort: boolean = true;
   isShowButtons: boolean = false;
   private resultAnswer: boolean|undefined = undefined;
+  private idSubscription!: Subscription;
   @ViewChild('id_video') id_video!: any;
 
 
-  constructor(private readonly router: Router) {
-    effect(() => {
-      this.videoData$ = this.http.get<VideoData>(`${environment.URL_API}/get-video`);
-      this.videoData$.subscribe((videoData) => {
-        console.log('subscribe:', videoData);
-        this.responseVideoData = videoData;
-      })
+  constructor(
+    private readonly router: Router,
+    private readonly changeDetectorRef: ChangeDetectorRef
+  ) {
+    // effect(() => {
+    //   console.log('onEffect');
+    //   this.videoData$ = this.http.get<VideoData>(`${environment.URL_API}/get-video`);
+    //   this.videoData$.subscribe((videoData) => {
+    //     console.log('subscribe:', videoData);
+    //     this.responseVideoData = videoData;
+    //   })
+    // });
+  }
+
+  ngOnInit() {
+    this.idSubscription = this.http.get<VideoData>(`${environment.URL_API}/get-video`).subscribe((resp) => {
+      console.log('subscribe:', resp);
+      this.responseVideoData = resp;
+      console.log('this.responseVideoData', this.responseVideoData);
+      this.changeDetectorRef.detectChanges();
     });
+  }
+
+  ngOnDestroy() {
+    if(this.idSubscription) {
+      console.log('this.idSubscription.unsubscribe()');
+      this.idSubscription.unsubscribe();
+    }
   }
 
   VideoPlay() {
@@ -49,7 +69,7 @@ export class VideoPage {
       this.isShowButtons = true;
     } else {
       console.log('this.responseVideoData', this.responseVideoData);
-      const result = this.responseVideoData.answer === this.resultAnswer;
+      const result = this.responseVideoData?.answer === this.resultAnswer;
       console.log('result', result);
       this.router.navigateByUrl('result-page', { state: { result_answer: result }});
     }
