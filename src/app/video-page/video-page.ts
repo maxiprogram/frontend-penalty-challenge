@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, effect, inject, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 interface VideoData {
   url_video_short: string,
@@ -28,7 +29,7 @@ export class VideoPage {
 
   constructor(private readonly router: Router) {
     effect(() => {
-      this.videoData$ = this.http.get<VideoData>('http://localhost:3000/api/get-video');
+      this.videoData$ = this.http.get<VideoData>(`${environment.URL_API}/get-video`);
       this.videoData$.subscribe((videoData) => {
         console.log('subscribe:', videoData);
         this.responseVideoData = videoData;
