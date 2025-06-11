@@ -14,7 +14,7 @@ export class FormPage {
   }
 
   userForm = new FormGroup({
-    firstName: new FormControl(''),
+    firstName: new FormControl('', [Validators.required]),
     lastName: new FormControl(''),
     email: new FormControl('', [Validators.required, Validators.email]),
     sphere: new FormControl('', [Validators.required]),

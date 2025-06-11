@@ -1,7 +1,28 @@
-<p>video-page works!</p>
+<!-- <p>video-page works!</p> -->
 
-@if (videoData$ | async; as videoData) {
-    <p>url_video_short: {{ videoData.url_video_short }}</p>
-    <p>url_video_full: {{ videoData.url_video_full }}</p>
-    <p>answer_true: {{ videoData.answer_true }}</p>
+@if (isShort) {
+    @if (videoData$ | async; as videoData) {
+        <!-- <p>url_video_short: {{ videoData.url_video_short }}</p>
+        <p>url_video_full: {{ videoData.url_video_full }}</p>
+        <p>answer_true: {{ videoData.answer }}</p> -->
+
+        <video #id_video autoplay (canplay)="VideoPlay()" (ended)="onVideoEnded()" controls>
+            <source src="{{ videoData.url_video_short }}" type="video/mp4">
+        </video>
+    }
+} @else {
+    @if (videoData$ | async; as videoData) {
+        <video #id_video autoplay (canplay)="VideoPlay()" (ended)="onVideoEnded()">
+            <source src="{{ videoData.url_video_full }}" type="video/mp4">
+        </video>
+    }
+}
+
+@if (isShowButtons && isShort) {
+    <div class="result_answer">
+        <div>
+            <button style="color: green;" type="button" (click)="onAnswer(true)">ЗАБЬЕТ</button>
+            <button style="color: red;" type="button" (click)="onAnswer(false)">НЕ ЗАБЬЕТ</button>
+        </div>
+    </div>
 }
