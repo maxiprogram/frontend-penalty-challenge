@@ -12,7 +12,7 @@ export class BeginPage {
   }
 
   onClickStart() {
-    this.router.navigateByUrl('/form-page');
+    this.router.navigateByUrl('form-page');
   }
 
   onClickFullScreen() {

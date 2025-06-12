@@ -35,11 +35,11 @@ export class FormPage implements OnDestroy {
   });
 
   onSubmit() {
-    console.log('Send Data', this.userForm.value);
+    //console.log('Send Data', this.userForm.value);
     
     this.isLoading.set(true);
     this.idSubscription = this.http.post(`${environment.URL_API}/append`, {
-      nameSheet: 'SheetA',
+      nameSheet: environment.NAME_SHEET,
       firstName: this.userForm.value.firstName,
       lastName: this.userForm.value.lastName,
       email: this.userForm.value.email,
@@ -47,7 +47,11 @@ export class FormPage implements OnDestroy {
     }).subscribe((resp: any) => {
       console.log('resp', resp);
       if(resp.status === 'ok') {
-        this.router.navigateByUrl('/video-page');
+        this.router.navigateByUrl('video-page', {
+          state: {
+            id_user: resp.id
+          }
+        });
       }
     });
   }

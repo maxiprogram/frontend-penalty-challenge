@@ -1,10 +1,15 @@
 <!-- <p>result-page works!</p> -->
 
-@if (result) {
-    <div style="color: green;">ВЫ УГАДАЛИ</div>
-    <button type="button" (click)="onClickBegin()">ВНАЧАЛО</button>
+@if (isLoaded()) {
+    @if (resultAnswer) {
+        <div style="color: green;">ВЫ УГАДАЛИ</div>
+        <div>Ваш номер: {{ idWin }}</div>
+        <button type="button" (click)="onClickBegin()">ВНАЧАЛО</button>
+    } @else {
+        <div style="color: red;">ВЫ НЕ УГАДАЛИ</div>
+        <button type="button" (click)="onClickBegin()">ЗАВЕРШИТЬ</button>
+        <button type="button" (click)="onClickReplay()">ПОПРОБЫВАТЬ СНОВО</button>
+    }
 } @else {
-    <div style="color: red;">ВЫ НЕ УГАДАЛИ</div>
-    <button type="button" (click)="onClickBegin()">ЗАВЕРШИТЬ</button>
-    <button type="button" (click)="onClickReplay()">ПОПРОБЫВАТЬ СНОВО</button>
+    <div>Ожидайте...</div>
 }
