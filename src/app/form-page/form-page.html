@@ -43,9 +43,16 @@
         <option value="B2B">B2B</option>
         <option value="OTHER">OTHER</option>
     </select>
+    <p></p>
+
+    @if (userForm.get('agreement')?.hasError('required') && (userForm.get('agreement')?.dirty || userForm.get('agreement')?.touched)) {
+        <div style="color: red;">Дайте согласие!</div>
+    }
+    <label for="agreement">Согласен на обработку персональных данных</label><br>
+    <input id="agreement" type="checkbox" formControlName="agreement">
+    <p></p>
 
     <!-- <p>Form Status: {{ userForm.status }}</p> -->
-    <p></p>
     <button type="button" (click)="onSubmit()" [disabled]="!userForm.valid">Далее</button>
 </form>
 } @else {

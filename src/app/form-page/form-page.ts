@@ -32,6 +32,7 @@ export class FormPage implements OnDestroy {
     lastName: new FormControl(''),
     email: new FormControl('', [Validators.required, Validators.email]),
     sphere: new FormControl('', [Validators.required]),
+    agreement: new FormControl(false, [Validators.requiredTrue]),
   });
 
   onSubmit() {
