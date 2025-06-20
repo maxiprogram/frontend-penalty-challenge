@@ -14,3 +14,14 @@
     align-items: center;
     height: 100vh;
 }
+
+.container {
+    display: flex;
+    vertical-align: middle;
+    align-items: center;
+    height: 100vh;
+}
+
+video {
+    margin: auto;
+}

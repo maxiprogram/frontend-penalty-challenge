@@ -6,15 +6,19 @@
         <p>answer_true: {{ videoData.answer }}</p> -->
         
         @if (responseVideoData) {
-            <video #id_video autoplay (canplay)="VideoPlay()" (ended)="onVideoEnded()" controls>
-                <source src="{{ responseVideoData.url_video_short }}" type="video/mp4">
-            </video>
+            <div class="container">
+                <video #id_video autoplay (canplay)="VideoPlay()" (ended)="onVideoEnded()">
+                    <source src="{{ responseVideoData.url_video_short }}" type="video/mp4">
+                </video>
+            </div>
         }
     } @else {
         @if (responseVideoData) {
-            <video #id_video autoplay (canplay)="VideoPlay()" (ended)="onVideoEnded()">
-                <source src="{{ responseVideoData.url_video_full }}" type="video/mp4">
-            </video>
+            <div class="container">
+                <video #id_video autoplay (canplay)="VideoPlay()" (ended)="onVideoEnded()">
+                    <source src="{{ responseVideoData.url_video_full }}" type="video/mp4">
+                </video>
+            </div>
         }
     }
     @if (isShowButtons && isShort) {
