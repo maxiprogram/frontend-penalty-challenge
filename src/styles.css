@@ -1,5 +1,65 @@
 /* You can add global styles to this file, and also import other style files */
 /*@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';*/
+
 body {
+    /* overflow: hidden; */
+    padding: 40px;
     margin: 0;
+    background-color: #161F38;
 }
+
+.main_container {
+    display: flex;
+    width: 100%;
+    padding: 0;
+    justify-content: center;
+}
+
+.left_block {
+    width: 900px;
+    height: 998px;
+    border-radius: 50px;
+    border: 1.36px solid #FFFFFF1A;
+    background-color: #202C4E;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.right_block {
+    width: 900px;
+    height: 1000px;
+    border-radius: 50px;
+    /* linear-gradient(0deg, rgba(255, 0, 105, 0.7) 5.3%, rgba(0, 96, 255, 0.07) 74.95%), */
+    margin-left: 20px;
+}
+
+.logo {
+    margin-top: 60px;
+    /* width: 591px;
+    height: 101px;
+    margin-left: 155px;
+    background-image: url("/logo.png"); */
+}
+
+/* and (orientation: landscape) */
+/* @media only screen and (min-width: 1024px) and (max-height: 1366px) { */
+@media only screen and (max-width: 1366px) and (orientation: landscape) {
+    .left_block {
+        width: 653px;
+        height: 942px;
+    }
+
+    .right_block {
+        width: 653px;
+        height: 944px;
+    }
+
+    .logo {
+        width: 463px;
+        height: 79px;
+        margin-top: 80px;
+    }
+  }

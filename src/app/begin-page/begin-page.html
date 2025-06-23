@@ -1,4 +1,15 @@
 <!-- <p>begin-page works!</p> -->
 
-<button (click)="onClickStart()" type="button" class="btn btn-primary">START</button>
-<button (click)="onClickFullScreen()" type="button" class="btn btn-primary">FullScreen</button>
+<button (click)="onClickFullScreen()" type="button" style="position: absolute; top: 0; left: 0; z-index: 1;">FullScreen</button>
+
+<div class="main_container">
+    <div class="left_block">
+        <img src="logo.png" class="logo">
+        <img src="text_right_block.png" class="text">
+        <img src="play.png" class="play_button" (click)="onClickStart()">
+    </div>
+    <div class="right_block">
+    </div>
+</div>
+
+<!-- <button (click)="onClickStart()" type="button" class="btn btn-primary">START</button> -->
