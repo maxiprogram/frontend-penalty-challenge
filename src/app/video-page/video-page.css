@@ -15,16 +15,61 @@
     height: 100vh;
 }
 
+.main_container {
+    flex-direction: column;
+    align-items: center;
+    vertical-align: middle;
+    height: 90vh;
+}
+
 .container {
-    display: flex;
+    position: relative;
+    width: 1280px;
+    height: 720px;
+    /* display: flex;
     vertical-align: middle;
     align-items: center;
-    height: 100vh;
-    width: 100%; /*TODO*/
+    height: 90vh; */
+    /* width: 100%; */ /* TODO */
 }
 
 video {
-    margin: auto;
-    width: 100%; /*TODO*/
-    height: 100%; /*TODO*/
+    width: 1280px;
+    height: 720px;
+    /* width: 100%; */ /*TODO*/
+    /* height: 100%; */ /*TODO*/
+    border-radius: 50px;
+
+}
+
+.logo2 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 340px;
+    height: 180px;
+    border-radius: 40px;
+    background-color: #202C4E;
+    border: 1.36px solid #FFFFFF1A;
+    z-index: 1;
+}
+
+.score_button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 12px;
+}
+
+.miss_button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 12px;
 }

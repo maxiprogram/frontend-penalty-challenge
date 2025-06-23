@@ -1,0 +1,73 @@
+.win {
+    background-image: url("/win.png");
+}
+
+.lose {
+    background-image: url("/lose.png");
+}
+
+.to_start_button {
+    width: 714px;
+    height: 121px;
+    margin-bottom: 60px;
+}
+
+.group_button {
+    width: 714px;
+    height: 242px;
+    margin-bottom: 60px;
+}
+
+.to_finish_button {
+    width: 714px;
+    height: 121px;
+    /* margin-bottom: 60px; */
+}
+
+.to_try_button {
+    width: 714px;
+    height: 121px;
+    /* margin-bottom: 60px; */
+}
+
+@media only screen and (max-width: 1366px) and (orientation: landscape) {
+
+    .win {
+        background-image: url("/win_small.png");
+    }
+
+    .lose {
+        background-image: url("/lose_small.png");
+    }
+
+    .text_win {
+        width: 410px;
+        height: 192px;
+    }
+
+    .text_lose {
+        width: 410px;
+        height: 192px;
+    }
+
+    .to_start_button {
+        width: 573px;
+        height: 94px;
+    }
+
+    .group_button {
+        width: 573px;
+        height: 188px;
+    }
+
+    .to_finish_button {
+        width: 573px;
+        height: 94px;
+    }
+
+    .to_try_button {
+        width: 573px;
+        height: 94px;
+    }
+
+  }

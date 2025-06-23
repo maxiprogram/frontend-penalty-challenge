@@ -6,29 +6,34 @@
         <p>answer_true: {{ videoData.answer }}</p> -->
         
         @if (responseVideoData) {
-            <div class="container">
-                <video #id_video autoplay (canplay)="VideoPlay()" (ended)="onVideoEnded()">
-                    <source src="{{ responseVideoData.url_video_short }}" type="video/mp4">
-                </video>
+            <div class="main_container">
+                <div class="container">
+                    <div class="logo2">
+                        <img src="logo2.png">
+                    </div>
+                    <video #id_video autoplay (canplay)="VideoPlay()" (ended)="onVideoEnded()">
+                        <source src="{{ responseVideoData.url_video_short }}" type="video/mp4">
+                    </video>
+                    @if (isShowButtons && isShort) {
+                        <img src="score_small.png" class="score_button" (click)="onAnswer(true)">
+                        <img src="miss_small.png" class="miss_button" (click)="onAnswer(false)">
+                        <!-- <button style="color: green;" type="button" (click)="onAnswer(true)">ЗАБЬЕТ</button>
+                        <button style="color: red;" type="button" (click)="onAnswer(false)">НЕ ЗАБЬЕТ</button> -->
+                    }
+                </div>
             </div>
         }
     } @else {
         @if (responseVideoData) {
-            <div class="container">
-                <video #id_video autoplay (canplay)="VideoPlay()" (ended)="onVideoEnded()">
-                    <source src="{{ responseVideoData.url_video_full }}" type="video/mp4">
-                </video>
+            <div class="main_container">
+                <div class="container">
+                    <video #id_video autoplay (canplay)="VideoPlay()" (ended)="onVideoEnded()">
+                        <source src="{{ responseVideoData.url_video_full }}" type="video/mp4">
+                    </video>
+                </div>
             </div>
         }
     }
-    @if (isShowButtons && isShort) {
-        <div class="result_answer">
-            <div>
-                <button style="color: green;" type="button" (click)="onAnswer(true)">ЗАБЬЕТ</button>
-                <button style="color: red;" type="button" (click)="onAnswer(false)">НЕ ЗАБЬЕТ</button>
-            </div>
-        </div>
-    }
 } @else {
-    <div>Ожидайте...</div>
+    <div>Wait...</div>
 }

@@ -2,14 +2,40 @@
 
 @if (isLoaded()) {
     @if (resultAnswer) {
-        <div style="color: green;">ВЫ УГАДАЛИ</div>
+        
+        <div class="main_container">
+            <div class="left_block">
+                <img src="logo.png" class="logo">
+                <img src="text_win.png" class="text_win">
+                <div style="color: green;">Ваш номер: {{ idWin }}</div>
+                <img src="to_start.png" class="to_start_button" (click)="onClickBegin()">
+            </div>
+            <div class="right_block win">
+            </div>
+        </div>
+
+        <!-- <div style="color: green;">ВЫ УГАДАЛИ</div>
         <div>Ваш номер: {{ idWin }}</div>
-        <button type="button" (click)="onClickBegin()">ВНАЧАЛО</button>
+        <button type="button" (click)="onClickBegin()">ВНАЧАЛО</button> -->
     } @else {
-        <div style="color: red;">ВЫ НЕ УГАДАЛИ</div>
+
+        <div class="main_container">
+            <div class="left_block">
+                <img src="logo.png" class="logo">
+                <img src="text_lose.png" class="text_lose">
+                <div class="group_button">
+                    <img src="to_finish.png" class="to_finish_button" (click)="onClickBegin()">
+                    <img src="to_try.png" class="to_try_button" (click)="onClickReplay()">
+                </div>
+            </div>
+            <div class="right_block lose">
+            </div>
+        </div>
+
+        <!-- <div style="color: red;">ВЫ НЕ УГАДАЛИ</div>
         <button type="button" (click)="onClickBegin()">ЗАВЕРШИТЬ</button>
-        <button type="button" (click)="onClickReplay()">ПОПРОБЫВАТЬ СНОВО</button>
+        <button type="button" (click)="onClickReplay()">ПОПРОБЫВАТЬ СНОВО</button> -->
     }
 } @else {
-    <div>Ожидайте...</div>
+    <div>Wait...</div>
 }

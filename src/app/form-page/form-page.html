@@ -51,29 +51,34 @@
                     <p></p>
                     <!-- <p>Value: {{ userForm.value.email }}</p> -->
 
-                    @if (userForm.get('sphere')?.hasError('required') && (userForm.get('sphere')?.dirty || userForm.get('sphere')?.touched)) {
-                        <div style="color: red;">Не должно быть пустым!</div>
-                    }
-                    <label for="sphere">Select Your Industry</label>
-                    <select id="sphere" formControlName="sphere">
-                        <option value="AFFILIATE">AFFILIATE</option>
-                        <option value="PSP">PSP</option>
-                        <option value="MARKETING">MARKETING</option>
-                        <option value="PLATFORMS">PLATFORMS</option>
-                        <option value="B2B">B2B</option>
-                        <option value="OTHER">OTHER</option>
-                    </select>
+                    <div class="form-control">
+                        <label for="sphere">
+                            Select Your Industry
+                            @if (userForm.get('sphere')?.hasError('required') && (userForm.get('sphere')?.dirty || userForm.get('sphere')?.touched)) {
+                                <div style="color: red; float: right; margin-left: 10px;">Required!</div>
+                            }
+                        </label>
+                        <select id="sphere" formControlName="sphere">
+                            <option value="AFFILIATE">AFFILIATE</option>
+                            <option value="PSP">PSP</option>
+                            <option value="MARKETING">MARKETING</option>
+                            <option value="PLATFORMS">PLATFORMS</option>
+                            <option value="B2B">B2B</option>
+                            <option value="OTHER">OTHER</option>
+                        </select>
+                    </div>
+                    <p></p>
                     <p></p>
 
-                    @if (userForm.get('agreement')?.hasError('required') && (userForm.get('agreement')?.dirty || userForm.get('agreement')?.touched)) {
+                    <!-- @if (userForm.get('agreement')?.hasError('required') && (userForm.get('agreement')?.dirty || userForm.get('agreement')?.touched)) {
                         <div style="color: red;">Дайте согласие!</div>
                     }
                     <label for="agreement">Согласен на обработку персональных данных</label><br>
                     <input id="agreement" type="checkbox" formControlName="agreement">
-                    <p></p>
+                    <p></p> -->
 
                     <!-- <p>Form Status: {{ userForm.status }}</p> -->
-                    <button type="button" (click)="onSubmit()" [disabled]="!userForm.valid">Далее</button>
+                    <input type="image" (click)="onSubmit()" [disabled]="!userForm.valid" src="play.png" class="start_button">
                 </form>
             </div>
             
@@ -87,6 +92,6 @@
 
 
 } @else {
-    <div>Ожидайте...</div>
+    <div>Wait...</div>
 }
 
