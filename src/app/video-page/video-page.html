@@ -27,6 +27,9 @@
         @if (responseVideoData) {
             <div class="main_container">
                 <div class="container">
+                    <div class="logo2">
+                        <img src="logo2.png">
+                    </div>
                     <video #id_video autoplay (canplay)="VideoPlay()" (ended)="onVideoEnded()">
                         <source src="{{ responseVideoData.url_video_full }}" type="video/mp4">
                     </video>

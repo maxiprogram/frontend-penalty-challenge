@@ -73,3 +73,12 @@ video {
     right: 0;
     margin: 12px;
 }
+
+@media only screen and (max-width: 1366px) and (orientation: landscape) {
+    .logo2 {
+        width: 280px;
+        height: 180px;
+    }
+}
+
+
