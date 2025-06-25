@@ -47,6 +47,11 @@ body {
 /* and (orientation: landscape) */
 /* @media only screen and (min-width: 1024px) and (max-height: 1366px) { */
 @media only screen and (max-width: 1366px) and (orientation: landscape) {
+    body {
+        padding-top: 16px;
+        padding-bottom: 0;
+    }
+
     .left_block {
         width: 653px;
         height: 942px;

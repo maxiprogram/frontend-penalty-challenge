@@ -3,6 +3,7 @@ import { BeginPage } from './begin-page/begin-page';
 import { FormPage } from './form-page/form-page';
 import { VideoPage } from './video-page/video-page';
 import { ResultPage } from './result-page/result-page';
+import { CashingPage } from './cashing-page/cashing-page';
 
 export const routes: Routes = [
     {
@@ -24,6 +25,11 @@ export const routes: Routes = [
         title: 'Результат',
         path: 'result-page',
         component: ResultPage
+    },
+    {
+        title: 'Кеширование видео',
+        path: 'cashing-page',
+        component: CashingPage
     },
     {
         path: '**',
