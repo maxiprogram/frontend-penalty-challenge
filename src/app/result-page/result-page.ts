@@ -99,6 +99,6 @@ export class ResultPage implements OnInit, OnDestroy {
   startTimer() {
     this.idTimer = setTimeout(() => {
       window.location.assign('https://boom-conference.com/');
-    }, 10000);
+    }, 60000);
   }
 }
