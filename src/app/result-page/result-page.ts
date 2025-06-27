@@ -18,6 +18,7 @@ export class ResultPage implements OnInit, OnDestroy {
   idWin: string|undefined = undefined;
   isLoaded = signal(false);
   nameSheet: string;
+  idTimer: number|undefined = undefined;
 
   constructor(private readonly router: Router) {
     //console.log('router.getCurrentNavigation()?.extras', router.getCurrentNavigation()?.extras);
@@ -78,10 +79,16 @@ export class ResultPage implements OnInit, OnDestroy {
   }
 
   onClickBegin() {
+    if(this.idTimer !== undefined) {
+      clearTimeout(this.idTimer);
+    }
     this.router.navigateByUrl('begin-page');
   }
 
   onClickReplay() {
+    if(this.idTimer !== undefined) {
+      clearTimeout(this.idTimer);
+    }
     this.router.navigateByUrl('video-page', {
       state: {
         id_user: this.idUser
@@ -90,7 +97,7 @@ export class ResultPage implements OnInit, OnDestroy {
   }
 
   startTimer() {
-    setTimeout(() => {
+    this.idTimer = setTimeout(() => {
       window.location.assign('https://boom-conference.com/');
     }, 10000);
   }

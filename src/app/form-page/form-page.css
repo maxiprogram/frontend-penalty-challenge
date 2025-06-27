@@ -146,6 +146,10 @@ option {
         font-size: 28px;
     }
 
+    option {
+        min-width: 573px;
+    }
+
     .start_button {
         width: 573px;
         height: 94px;
