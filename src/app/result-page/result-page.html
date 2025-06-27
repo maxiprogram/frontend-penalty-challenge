@@ -8,7 +8,12 @@
                 <img src="logo.png" class="logo">
                 <img src="text_win.png" class="text_win">
                 <div class="font_number" >Number: {{ idWin }}</div>
-                <img src="to_start.png" class="to_start_button" (click)="onClickBegin()">
+                @if (nameSheet === 'SheetS') {
+                    <img src="to_start.png" class="to_start_button" style="margin-bottom: 20px;" (click)="onClickBegin()">
+                    <a href="https://boom-conference.com/"><img src="to_site.png" class="to_start_button"></a>
+                } @else {
+                    <img src="to_start.png" class="to_start_button" (click)="onClickBegin()">
+                }
             </div>
             <div class="right_block win">
             </div>
@@ -23,10 +28,32 @@
             <div class="left_block">
                 <img src="logo.png" class="logo">
                 <img src="text_lose.png" class="text_lose">
-                <div class="group_button">
-                    <img src="to_finish.png" class="to_finish_button" (click)="onClickBegin()">
-                    <img src="to_try.png" class="to_try_button" (click)="onClickReplay()">
-                </div>
+                @if (nameSheet === 'SheetS') {
+                    <div class="group_button" style="margin-bottom: 100px;">
+                        <img src="to_finish.png" class="to_finish_button" (click)="onClickBegin()">    
+                        <img src="to_try.png" class="to_try_button" (click)="onClickReplay()">
+                        <div style="text-align: center;">
+                            <a href="https://boom-conference.com/" style="
+                            font-family: Inter;
+                            font-weight: 700;
+                            font-size: 44px;
+                            line-height: 120%;
+                            text-align: center;
+                            text-transform: uppercase;
+                            text-decoration: underline;
+                            text-decoration-style: solid;
+                            text-decoration-thickness: 0%;
+                            color: white;
+                            ">Go to Site</a>
+                        </div>
+                    </div>
+                } @else {
+                    <div class="group_button">
+                        <img src="to_finish.png" class="to_finish_button" (click)="onClickBegin()">    
+                        <img src="to_try.png" class="to_try_button" (click)="onClickReplay()">
+                    </div>
+                }
+
             </div>
             <div class="right_block lose">
             </div>

@@ -17,9 +17,14 @@ export class ResultPage implements OnInit, OnDestroy {
   idUser!: number;
   idWin: string|undefined = undefined;
   isLoaded = signal(false);
+  nameSheet: string;
 
   constructor(private readonly router: Router) {
     //console.log('router.getCurrentNavigation()?.extras', router.getCurrentNavigation()?.extras);
+    this.nameSheet = environment.NAME_SHEET;
+    if(this.nameSheet === 'SheetS') {
+      this.startTimer();
+    }
 
     const extras = this.router.getCurrentNavigation()?.extras;
     if(extras?.state) {
@@ -82,5 +87,11 @@ export class ResultPage implements OnInit, OnDestroy {
         id_user: this.idUser
       }
     });
+  }
+
+  startTimer() {
+    setTimeout(() => {
+      window.location.assign('https://boom-conference.com/');
+    }, 10000);
   }
 }
