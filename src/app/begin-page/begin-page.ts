@@ -27,4 +27,8 @@ export class BeginPage {
       item.msRequestFullscreen();
     }
   }
+
+  goCashingPage() {
+    this.router.navigateByUrl('cashing-page');
+  }
 }
