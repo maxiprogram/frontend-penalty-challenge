@@ -2,13 +2,13 @@
 
 
 @for (num of getArray(); track num) {
-    <video autoplay controls>
+    <video autoplay controls preload="auto">
         <source src="{{ (baseUrl + 'short/' + (num < 10 ? `0${num}SG.mp4` : `${num}SG.mp4`)) }}" type="video/mp4">
     </video>
 }
 
 @for (num of getArray2(); track num) {
-    <video autoplay controls>
+    <video autoplay controls preload="auto">
         <source src="{{ (baseUrl + 'full/' + (num < 10 ? `0${num}FG.mp4` : `${num}FG.mp4`)) }}" type="video/mp4">
     </video>
 }
